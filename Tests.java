@@ -1,17 +1,60 @@
+import java.util.Scanner;
+
 public class Tests {
-    public static void main(String[]args){
-        double testScore1, testScore2, testScore3, average;
-        // allows the test scroes to store decimal values 
-        testScore1 = 88.2;
-        testScore2 = 78.9;
-        testScore3 = 97.6;
-        //ai included this formula to calculate the average of 3 test scores
-        average = (testScore1 + testScore2 + testScore3) / 3.0;
-        //displays the test scores and the average of the 3 test scores.
-        System.out.println("Test score 1: " + testScore1);
-        System.out.println("Test score 2: " + testScore2);
-        System.out.println("Test score 3: " + testScore3);
-        System.out.printf("The average of 3 test scores is: %.2f%n", average);
+    //Private data fields
+    private double ave;
+    private int count;
+    private int score;
+    //public constructors 
+    public Tests(){
+        ave = 0.0;
+        count = 0; 
+        score = 0; 
 
     }
+    
+//public set ot mutator methods for every private data field
+    public void setScore(int newScore){
+        score = (newScore + score);
+        count = count +1;
+    }
+// public get or accessor methods for every private data field
+    public int getScore(){
+        return score; 
+
+    }
+    public int getCount(){
+        return count;
+    }
+    public double getAve(){
+        return ave;
+    }
+
+    public void getAverage(){
+        Scanner input = new Scanner(System.in) ;
+        
+        double sum = 0.0;
+        count = 0; 
+        System.out.println("Enter a test score (-1 to quit): " );
+        score = input.nextInt();
+
+        while (score != -1){
+            sum = sum + score;
+            count ++; 
+
+            System.out.print("Enter a test score (-1 to quit ): ");
+            score = input.nextInt();
+
+        }   
+        ave = sum/count; 
+
+         input.close();
+
+    }
+// public toString method that returns a string description of the object state 
+    public String toString(){
+        return "The average of the "
+ + count + " scores entered is "+ String.format("%.2f", ave) + ".";
+    }
 }
+
