@@ -1,3 +1,4 @@
+import java.util.Scanner;
 public class Calc {
     //private fields 
     private double num1;
@@ -40,6 +41,14 @@ public class Calc {
 //divide num1 and num2 
     public double divide(){
         return (num1 / num2);
+    }
+    // added method 
+    public double getValidNumber(Scanner scan){
+        while(!scan.hasNextDouble()){
+            System.out.println("Invalid input. Please enter a number: ");
+            scan.next();
+        }
+        return scan.nextDouble();
     }
     //tostring return every this as string 
     public String toString(){
